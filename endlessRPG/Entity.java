@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public abstract class Entity {
-	
+
 	// Declares variables
 	private Image img;
 	private int delay, index, count;
@@ -13,19 +13,20 @@ public abstract class Entity {
 	private int idleWidth, idleHeight;
 	private int currentHealth, totalHealth;
 	private int level;
-	
+
 	// Draws entity
 	public void draw(Graphics g) {
 		g.drawImage(img, x, y, width, height, null);
 	}
-	
+
 	// Entity takes damage (loses health)
 	public void takeDamage(int damage) {
 		currentHealth -= damage;
-		
-		if(currentHealth <= 0) currentHealth = 0;
+
+		if (currentHealth <= 0)
+			currentHealth = 0;
 	}
-	
+
 	// Getter and setter for all variables
 	public int getDelay() {
 		return delay;
@@ -115,7 +116,6 @@ public abstract class Entity {
 		this.img = img;
 	}
 
-	
 	public int getCount() {
 		return count;
 	}
@@ -128,16 +128,16 @@ public abstract class Entity {
 		count = 0;
 		index = 0;
 	}
-	
+
 	public void resetLoc() {
 		x = startX;
 		y = startY;
 	}
-	
+
 	public void moveX(int x) {
 		this.x += x;
 	}
-	
+
 	public void moveY(int y) {
 		this.y += y;
 	}

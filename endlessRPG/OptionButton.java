@@ -11,7 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class OptionButton extends Rectangle {
-	
+
 	// Declare variables
 	private int playerAction;
 	private boolean isSpell = false;
@@ -20,75 +20,76 @@ public class OptionButton extends Rectangle {
 	private String cost;
 	private Image img;
 	private int wMod, hMod;
-	
-	OptionButton(String title, String cost, int x, int y, int width, int height, int playerAction, String image, int wMod, int hMod){
+
+	OptionButton(String title, String cost, int x, int y, int width, int height, int playerAction, String image, int wMod,
+			int hMod) {
 		super(x, y, width, height);
-		
+
 		this.setPlayerAction(playerAction);
-		
+
 		this.setTitle(title);
-		
+
 		// Initialize image
 		try {
 			img = ImageIO.read(new File(image));
 
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
-        }
-		
+		}
+
 		this.wMod = wMod;
 		this.hMod = hMod;
-		
+
 		this.cost = cost;
 	}
-	
-	OptionButton(String title, String cost, int x, int y, int width, int height, int playerAction, int spellChoice, String image, int wMod, int hMod){
+
+	OptionButton(String title, String cost, int x, int y, int width, int height, int playerAction, int spellChoice,
+			String image, int wMod, int hMod) {
 		super(x, y, width, height);
-		
+
 		this.setPlayerAction(playerAction);
-		
+
 		isSpell = true;
-		
+
 		this.setSpellChoice(spellChoice);
-		
+
 		this.setTitle(title);
-		
+
 		// Initialize image
 		try {
 			img = ImageIO.read(new File(image));
 
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
-        }
-		
+		}
+
 		this.wMod = wMod;
 		this.hMod = hMod;
-		
+
 		this.cost = cost;
 	}
-	
+
 	// Draws the button
 	public void draw(Graphics g, int x, int y) {
 		this.x = x;
 		this.y = y;
-		
+
 		g.setColor(Color.white);
 		g.fillRect(x, y, width, height);
-		g.drawImage(img, x + 5, y + 15, width-10 + wMod, height-25 + hMod, null);
+		g.drawImage(img, x + 5, y + 15, width - 10 + wMod, height - 25 + hMod, null);
 		g.setColor(Color.black);
 		g.drawString(title, x + 1, y + height - 2);
 		g.drawString(cost, x + 1, y + 12);
 	}
-	
+
 	// Returns true if the mouse clicks the button
-	public boolean isOn(MouseEvent e) {		
-		if(e.getX() < x + width && e.getX() > x && e.getY() < y + height && e.getY() > y) return true;
-		
+	public boolean isOn(MouseEvent e) {
+		if (e.getX() < x + width && e.getX() > x && e.getY() < y + height && e.getY() > y)
+			return true;
+
 		return false;
 	}
-	
+
 	// Getter and setter functions for variables
 	public int getPlayerAction() {
 		return playerAction;
@@ -97,7 +98,7 @@ public class OptionButton extends Rectangle {
 	public void setPlayerAction(int playerAction) {
 		this.playerAction = playerAction;
 	}
-	
+
 	public boolean isSpell() {
 		return isSpell;
 	}
@@ -117,5 +118,5 @@ public class OptionButton extends Rectangle {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-} 
+
+}
